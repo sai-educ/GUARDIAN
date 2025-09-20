@@ -29,8 +29,8 @@ navLinks.forEach(link => {
         // Close mobile menu after selection
         navLinksContainer.classList.remove('active');
         
-        // Scroll to top smoothly
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        // Scroll to top without animation
+        window.scrollTo(0, 0);
         
         // Update URL hash without triggering scroll
         history.pushState(null, null, `#${targetPage}`);
@@ -60,9 +60,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Initialize map placeholder
     initializeMap();
-    
-    // Initialize animations
-    initializeScrollAnimations();
     
     // Initialize smooth scroll for anchor links
     initializeSmoothScroll();
@@ -99,40 +96,6 @@ function initializeMap() {
     }
 }
 
-// Scroll animations
-function initializeScrollAnimations() {
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-
-    // Apply observer to all sections
-    document.querySelectorAll('.section').forEach(section => {
-        section.style.opacity = '0';
-        section.style.transform = 'translateY(20px)';
-        section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(section);
-    });
-
-    // Apply observer to team members
-    document.querySelectorAll('.team-member').forEach((member, index) => {
-        member.style.opacity = '0';
-        member.style.transform = 'translateY(20px)';
-        member.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
-        observer.observe(member);
-    });
-}
-
 // Smooth scroll for anchor links
 function initializeSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -144,7 +107,7 @@ function initializeSmoothScroll() {
                 const target = document.querySelector(href);
                 if (target) {
                     target.scrollIntoView({
-                        behavior: 'smooth',
+                        behavior: 'auto',
                         block: 'start'
                     });
                 }
