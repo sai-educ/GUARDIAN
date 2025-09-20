@@ -3,344 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GUARDIAN Initiative - Global United Alliance for Reversing Desertification</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(to bottom, #f5f5f5, #e8e8e8);
-        }
-
-        /* Navigation */
-        nav {
-            background: linear-gradient(135deg, #2c5f2d 0%, #4a7c59 100%);
-            padding: 1rem 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: white;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            transition: background 0.3s;
-        }
-
-        .nav-links a:hover, .nav-links a.active {
-            background: rgba(255,255,255,0.2);
-        }
-
-        /* Page Container */
-        .page {
-            display: none;
-            animation: fadeIn 0.5s;
-        }
-
-        .page.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem 20px;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 3rem 20px;
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .hero h1 {
-            font-size: clamp(2rem, 5vw, 3rem);
-            margin-bottom: 1rem;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        /* Content Sections */
-        .section {
-            background: white;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-
-        .section h2 {
-            color: #2c5f2d;
-            margin-bottom: 1.5rem;
-            font-size: 2rem;
-            border-bottom: 3px solid #4a7c59;
-            padding-bottom: 0.5rem;
-        }
-
-        .section h3 {
-            color: #4a7c59;
-            margin: 1.5rem 0 1rem;
-            font-size: 1.5rem;
-        }
-
-        .section p {
-            margin-bottom: 1rem;
-            line-height: 1.8;
-        }
-
-        /* Team Grid */
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-
-        .team-member {
-            text-align: center;
-            padding: 1rem;
-            background: #f9f9f9;
-            border-radius: 8px;
-        }
-
-        .team-member img {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: #ddd;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Map Container */
-        .map-container {
-            height: 500px;
-            background: #e0e0e0;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 2rem 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .map-placeholder {
-            text-align: center;
-            padding: 2rem;
-        }
-
-        /* Champion Card */
-        .champion-card {
-            background: linear-gradient(135deg, #ffd89b 0%, #ffb347 100%);
-            padding: 2rem;
-            border-radius: 10px;
-            margin: 2rem 0;
-            box-shadow: 0 5px 20px rgba(255, 179, 71, 0.3);
-        }
-
-        .champion-profile {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .champion-image {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background: white;
-            border: 4px solid #fff;
-        }
-
-        .champion-info h3 {
-            color: #333;
-            margin-bottom: 0.5rem;
-        }
-
-        .champion-location {
-            color: #666;
-            font-style: italic;
-        }
-
-        .action-steps {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-top: 1.5rem;
-        }
-
-        .action-steps ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .action-steps li {
-            padding: 0.8rem 0;
-            border-bottom: 1px solid #eee;
-            display: flex;
-            align-items: start;
-        }
-
-        .action-steps li:last-child {
-            border-bottom: none;
-        }
-
-        .action-steps li:before {
-            content: "✓";
-            color: #4a7c59;
-            font-weight: bold;
-            margin-right: 1rem;
-            font-size: 1.2rem;
-        }
-
-        /* CTA Button */
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(135deg, #4a7c59 0%, #2c5f2d 100%);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            margin-top: 1.5rem;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(44, 95, 45, 0.3);
-        }
-
-        /* Image Placeholder */
-        .image-placeholder {
-            background: #ddd;
-            padding: 2rem;
-            text-align: center;
-            border-radius: 8px;
-            margin: 1rem 0;
-            color: #666;
-            font-style: italic;
-        }
-
-        /* Mobile Menu Toggle */
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-            }
-
-            .nav-links {
-                display: none;
-                width: 100%;
-                flex-direction: column;
-                margin-top: 1rem;
-                gap: 0;
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .nav-links a {
-                padding: 1rem;
-                border-top: 1px solid rgba(255,255,255,0.1);
-            }
-
-            .champion-profile {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .map-container {
-                height: 400px;
-            }
-
-            .team-grid {
-                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-
-            .section {
-                padding: 1.5rem;
-            }
-
-            .map-container {
-                height: 300px;
-            }
-        }
-    </style>
+    <title>GUARDIAN - Global United Alliance for Reversing Desertification In All Nations</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <div class="logo">🌿 GUARDIAN</div>
+            <div class="logo">
+                <span class="logo-icon">🌿</span>
+                <div class="logo-text">
+                    <strong>GUARDIAN</strong>
+                    <span class="logo-subtitle">Global United Alliance for Reversing Desertification In All Nations</span>
+                </div>
+            </div>
             <button class="menu-toggle" id="menuToggle">☰</button>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#" data-page="page1" class="nav-link active">History & Causes</a></li>
                 <li><a href="#" data-page="page2" class="nav-link">Solutions & Map</a></li>
-                <li><a href="#" data-page="page3" class="nav-link">Champions</a></li>
+                <li><a href="#" data-page="page3" class="nav-link">Become a Guardian</a></li>
             </ul>
         </div>
     </nav>
@@ -348,8 +29,10 @@
     <!-- Page 1: History and Causes -->
     <div id="page1" class="page active">
         <div class="hero">
-            <h1>The Growing Crisis of Pre-Desertification</h1>
-            <p>Understanding the expansion of Sahel-like conditions across the globe</p>
+            <div class="hero-content">
+                <h1>The Growing Crisis of Pre-Desertification</h1>
+                <p>Understanding the expansion of Sahel-like conditions across the globe</p>
+            </div>
         </div>
 
         <div class="container">
@@ -406,11 +89,11 @@
 
             <section class="section">
                 <h2>Our Team</h2>
-                <p>United by purpose, driven by urgency - meet the founding members of the GUARDIAN initiative (Global United Alliance for Reversing Desertification In All Nations):</p>
+                <p>A collaborative initiative by the Global Climate Association with Bio for Climate</p>
                 <div class="team-grid">
                     <div class="team-member">
-                        <img src="media/team/su.jpg" alt="Su">
-                        <h4>Su</h4>
+                        <img src="media/team/sue.jpg" alt="Sue">
+                        <h4>Sue</h4>
                         <p>Climate Researcher</p>
                     </div>
                     <div class="team-member">
@@ -424,9 +107,9 @@
                         <p>Ecosystem Specialist</p>
                     </div>
                     <div class="team-member">
-                        <img src="media/team/sai.jpg" alt="Sai">
-                        <h4>Sai</h4>
-                        <p>Data Analyst</p>
+                        <img src="media/team/technology.jpg" alt="Technology Lead">
+                        <h4>Technology</h4>
+                        <p>Initiative Lead</p>
                     </div>
                 </div>
             </section>
@@ -436,8 +119,10 @@
     <!-- Page 2: Solutions and Interactive Map -->
     <div id="page2" class="page">
         <div class="hero">
-            <h1>Solutions & Global Impact Map</h1>
-            <p>Actionable strategies and real-time monitoring of pre-desertification worldwide</p>
+            <div class="hero-content">
+                <h1>Solutions & Global Impact Map</h1>
+                <p>Actionable strategies and real-time monitoring of pre-desertification worldwide</p>
+            </div>
         </div>
 
         <div class="container">
@@ -505,33 +190,25 @@
                     </ul>
                 </div>
             </section>
-
-            <section class="section">
-                <h2>Policy Recommendations</h2>
-                <p>
-                    Effective action requires coordinated policy responses at local, national, and international levels. Key recommendations include carbon pricing mechanisms, sustainable land use regulations, international cooperation frameworks, and financial support for affected communities.
-                </p>
-                <div class="image-placeholder">
-                    [Place image: media/policy-framework.jpg - Infographic of policy recommendations]
-                </div>
-            </section>
         </div>
     </div>
 
-    <!-- Page 3: Champions -->
+    <!-- Page 3: Become a Guardian -->
     <div id="page3" class="page">
         <div class="hero">
-            <h1>Become a Champion for Change</h1>
-            <p>Join the global movement to restore our lands and secure our future</p>
+            <div class="hero-content">
+                <h1>Become a Guardian</h1>
+                <p>Join the global movement to restore our lands and secure our future</p>
+            </div>
         </div>
 
         <div class="container">
             <section class="section">
-                <h2>Featured Champion</h2>
+                <h2>Featured Guardian</h2>
                 
                 <div class="champion-card">
                     <div class="champion-profile">
-                        <img class="champion-image" src="media/champions/senegal-champion.jpg" alt="Champion from Senegal">
+                        <img class="champion-image" src="media/champions/senegal-champion.jpg" alt="Guardian from Senegal">
                         <div class="champion-info">
                             <h3>Mamadou Diallo</h3>
                             <p class="champion-location">📍 Kaolack Region, Senegal</p>
@@ -562,7 +239,7 @@
             </section>
 
             <section class="section">
-                <h2>Your Path to Becoming a Champion</h2>
+                <h2>Your Path to Becoming a Guardian</h2>
                 
                 <h3>Step 1: Assess Your Local Environment</h3>
                 <p>
@@ -584,7 +261,7 @@
                 
                 <h3>Step 4: Connect & Collaborate</h3>
                 <p>
-                    Join the GUARDIAN network to access resources, training materials, and connect with other champions worldwide. Share your experiences and learn from others facing similar challenges.
+                    Join the GUARDIAN network to access resources, training materials, and connect with other guardians worldwide. Share your experiences and learn from others facing similar challenges.
                 </p>
                 
                 <h3>Step 5: Scale Your Impact</h3>
@@ -592,11 +269,11 @@
                     As your projects succeed, expand their scope. Seek funding, engage policymakers, and inspire neighboring communities to replicate your model. Your local action contributes to global change.
                 </p>
                 
-                <a href="#" class="cta-button">Join the Champion Network →</a>
+                <a href="#" class="cta-button">Join the Guardian Network →</a>
             </section>
 
             <section class="section">
-                <h2>Resources for Champions</h2>
+                <h2>Resources for Guardians</h2>
                 <div class="image-placeholder">
                     [Place image: media/resources-banner.jpg - Collage of educational materials]
                 </div>
@@ -611,7 +288,7 @@
                 </ul>
             </section>
 
-            <section class="section" style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);">
+            <section class="section action-section">
                 <h2>Take Action Today</h2>
                 <p style="font-size: 1.2rem; text-align: center;">
                     Every restored hectare, every planted tree, every conserved drop of water matters. The fight against pre-desertification begins with individuals like you taking action in their communities.
@@ -623,101 +300,30 @@
         </div>
     </div>
 
-    <script>
-        // Navigation functionality
-        const navLinks = document.querySelectorAll('.nav-link');
-        const pages = document.querySelectorAll('.page');
-        const menuToggle = document.getElementById('menuToggle');
-        const navLinksContainer = document.getElementById('navLinks');
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>GUARDIAN Initiative</h4>
+                    <p>Global United Alliance for Reversing Desertification In All Nations</p>
+                </div>
+                <div class="footer-section">
+                    <h4>A Collaborative Initiative</h4>
+                    <p>Made possible by the <strong>Global Climate Association</strong> with <strong>Bio for Climate</strong></p>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect With Us</h4>
+                    <p>Join the movement to restore our planet</p>
+                    <a href="#" class="footer-link">Get Involved →</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 GUARDIAN Initiative. Together for a sustainable future.</p>
+            </div>
+        </div>
+    </footer>
 
-        // Mobile menu toggle
-        menuToggle.addEventListener('click', () => {
-            navLinksContainer.classList.toggle('active');
-        });
-
-        // Page navigation
-        navLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const targetPage = link.getAttribute('data-page');
-                
-                // Update active states
-                navLinks.forEach(l => l.classList.remove('active'));
-                link.classList.add('active');
-                
-                pages.forEach(page => page.classList.remove('active'));
-                document.getElementById(targetPage).classList.add('active');
-                
-                // Close mobile menu after selection
-                navLinksContainer.classList.remove('active');
-                
-                // Scroll to top
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-        });
-
-        // Initialize map placeholder (to be replaced with actual map implementation)
-        document.addEventListener('DOMContentLoaded', () => {
-            console.log('Ready to initialize OpenStreetMap and NASA API integration');
-            
-            // Placeholder for map initialization
-            // This is where you would initialize Leaflet/OpenLayers with OpenStreetMap
-            // and overlay NASA Earthdata API information
-            
-            /* Example structure for future implementation:
-            
-            // 1. Initialize OpenStreetMap
-            const map = L.map('mapContainer').setView([0, 0], 2);
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
-            
-            // 2. Fetch NASA data
-            fetch('NASA_API_ENDPOINT')
-                .then(response => response.json())
-                .then(data => {
-                    // Process and overlay NASA data
-                });
-            
-            // 3. Add interactive markers for affected areas
-            // 4. Add layer controls for different data views
-            
-            */
-        });
-
-        // Smooth scroll behavior for internal links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = this.getAttribute('href');
-                if (target !== '#') {
-                    document.querySelector(target)?.scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // Add animation on scroll (simple fade-in effect)
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Apply observer to all sections
-        document.querySelectorAll('.section').forEach(section => {
-            section.style.opacity = '0';
-            section.style.transform = 'translateY(20px)';
-            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(section);
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
